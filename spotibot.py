@@ -26,7 +26,10 @@ async def search(ctx, *args):
     urlToSend = "First 5 results:"
     for item in results['tracks']['items']:
          urlToSend += "\n"+item['external_urls']['spotify']
-    await ctx.send(f"You searched for: {SEARCH_TERM}\n"+urlToSend)
+    if urlToSend == "First 5 results:":
+        await ctx.send("No results")
+    else:
+        await ctx.send(f"You searched for: {SEARCH_TERM}\n"+urlToSend)
     return
 
 @bot.command()
