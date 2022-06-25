@@ -1,4 +1,3 @@
-
 import secrets
 import spotipy
 import random
@@ -11,9 +10,6 @@ bot_token = secrets.bot_token
 client_id = secrets.client_id
 client_secret = secrets.client_secret #sets spotify app client id and client secrets
 
-artist_name = ""
-songs = []
-amount_of_songs = 0
 
 sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id=client_id, client_secret=client_secret))
 bot = Bot(command_prefix = '!') #sets discord bot prefix to '!'
@@ -21,21 +17,24 @@ bot = Bot(command_prefix = '!') #sets discord bot prefix to '!'
 
 @bot.event
 async def on_ready():
-    await bot.change_presence(activity=discord.Game(name="Use !song"))
-    print(bot.user.name)
-    print("bot active")
+    await bot.change_presence(activity=discord.Game(name="Use !cmds"))
+    print(bot.user.name+" is active")
 
 @bot.command()
-async def song(ctx, arg):
-    artist_name = arg
-    results = sp.search(q=artist_name, type='track', limit=20) #gets artists top 20 tracks
-    for track in results['tracks']['items']:
-        songs.append(track['name'])
-    songToSend = random.choice(songs)
-    await ctx.send(songToSend)
-    songs.clear()
+async def search(ctx, *args):
+    SEARCH_TERM = " ".join(args)
+    results = sp.search(q=SEARCH_TERM, type='track', limit=20) #gets top 20 tracks from search query
+    trackNo = random.randint(0,19)
+    urlToSend = results['tracks']['items'][trackNo]['external_urls']['spotify']
+    await ctx.send(f"You searched: {SEARCH_TERM}\nURL: {urlToSend}")
     return
-          
+
+@bot.command()
+async def cmds(ctx):
+    await ctx.send("Use !search [SEARCH_TERM] to get a song")
+    return
+
+
 
 
 bot.run(bot_token)
