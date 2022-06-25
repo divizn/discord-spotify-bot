@@ -34,7 +34,4 @@ async def cmds(ctx):
     await ctx.send("Use !search [SEARCH_TERM] to get a song")
     return
 
-
-
-
 bot.run(bot_token)
