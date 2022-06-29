@@ -29,6 +29,11 @@ async def on_ready():
 async def song(ctx, *args):
     SEARCH_TERM = " ".join(args) #turns the args into a search term to be used 
     results = sp.search(q=SEARCH_TERM, type='track', limit=5) #gets top 5 tracks from search query
+    if results['tracks']['items'] == []:
+        embed=discord.Embed(color=0x00cc03)
+        embed.set_thumbnail(url=spotifyLogo)
+        embed.add_field(name="No results found", value=f"No results found for '{SEARCH_TERM}', please try again and make sure the song name is valid", inline=False)
+        await ctx.send(embed=embed)
     #get song name
     songName = results['tracks']['items'][0]['name']
     #gets song image
@@ -45,22 +50,16 @@ async def song(ctx, *args):
     for artists in results['tracks']['items'][0]['artists']:
         artistNamesArr.append(artists['name'])
     artistNames = ', '.join(map(str, artistNamesArr))
-    if results['tracks']['items'] == []:
-        embed=discord.Embed(color=0x00cc03)
-        embed.set_thumbnail(url=spotifyLogo)
-        embed.add_field(name="No results found", value=f"No results found for '{SEARCH_TERM}', please try again and make sure the song name is valid", inline=False)
-        await ctx.send(embed=embed)
+    embed=discord.Embed(title=songName, url=songURL, color=0x00cc03)
+    embed.set_thumbnail(url=imageURL)
+    embed.add_field(name="Song name", value=songName, inline=True)
+    embed.add_field(name="Artist(s)", value=artistNames, inline=False)
+    if isExplicit:
+        embed.add_field(name="Explicit?", value="Explicit", inline=False)
     else:
-        embed=discord.Embed(title=songName, url=songURL, color=0x00cc03)
-        embed.set_thumbnail(url=imageURL)
-        embed.add_field(name="Song name", value=songName, inline=True)
-        embed.add_field(name="Artist(s)", value=artistNames, inline=False)
-        if isExplicit:
-            embed.add_field(name="Explicit?", value="Explicit", inline=False)
-        else:
-            embed.add_field(name="Explicit?", value="Not Explicit", inline=False)
-        embed.add_field(name="Popularity index (0-100):", value=popularityIndex, inline=False)
-        await ctx.send(embed=embed)
+        embed.add_field(name="Explicit?", value="Not Explicit", inline=False)
+    embed.add_field(name="Popularity index (0-100):", value=popularityIndex, inline=False)
+    await ctx.send(embed=embed)
     return
 
 
@@ -71,7 +70,10 @@ async def artist(ctx, *args):
     SEARCH_TERM = " ".join(args)
     results = sp.search(q=SEARCH_TERM, type='artist', limit=5)
     if results['artists']['items'] == []:
-        await ctx.send(f"No results for {SEARCH_TERM}")  #check if no artists
+        embed=discord.Embed(color=0x00cc03)
+        embed.set_thumbnail(url=spotifyLogo)
+        embed.add_field(name="No results found", value=f"No results found for '{SEARCH_TERM}', please try again and make sure the artist name is valid", inline=False)
+        await ctx.send(embed=embed)
     json = results['artists']['items']
     #get artist details
     artistLink = json[0]['external_urls']['spotify']
