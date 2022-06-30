@@ -1,4 +1,3 @@
-from pydoc import cli
 import secrets
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
