@@ -1,4 +1,2 @@
 discord.py
-requests
 spotipy
-python-dotenv
