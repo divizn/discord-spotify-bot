@@ -49,6 +49,7 @@ async def song(ctx, *args):
     for artists in results['tracks']['items'][0]['artists']:
         artistNamesArr.append(artists['name'])
     artistNames = ', '.join(map(str, artistNamesArr))
+    #create embed
     embed=discord.Embed(title=songName, url=songURL, color=0x00cc03)
     embed.set_thumbnail(url=imageURL)
     embed.add_field(name="Song name", value=songName, inline=True)
