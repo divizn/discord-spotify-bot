@@ -19,7 +19,7 @@ You can watch the demo video [**here**](https://youtu.be/rlVV-3SfUdc) or add the
 
 <h3 align=left>Screenshots:</h3>
 
-<a href="#"><img src="https://i.imgur.com/pU93Gt0.png"></a>
+<a href="#"><img src="https://i.imgur.com/XVDncXi.png"></a>
 
 <a href="#"><img src="https://i.imgur.com/7MMhnLh.png"></a>
 
@@ -28,5 +28,3 @@ You can watch the demo video [**here**](https://youtu.be/rlVV-3SfUdc) or add the
 <a href="#"><img src="https://i.imgur.com/9HOtCQu.png"></a>
 
 <a href="#"><img src="https://i.imgur.com/HfAMbdx.png"></a>
-
-<a href="#"><img src="https://i.imgur.com/XVDncXi.png"></a>
