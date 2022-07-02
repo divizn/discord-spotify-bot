@@ -1,4 +1,4 @@
-a<h1 align=center>Discord Spotify Bot</h1>
+<h1 align=center>Discord Spotify Bot</h1>
 
 <h2 align=center>A Discord bot utilising Spotify API</h2>
 
