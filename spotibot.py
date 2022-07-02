@@ -106,7 +106,7 @@ async def cmds(ctx):
     embed.set_thumbnail(url=spotifyLogo)
     embed.add_field(name="Search for a song", value="!song [song name]", inline=False)
     embed.add_field(name="Search for an artist", value="!artist [artist name]", inline=False)
-    embed.add_field(name="See what you're listening to", value="!artist [optional @mention]", inline=False)
+    embed.add_field(name="See what you're listening to", value="!spotify [@mention]", inline=False)
     embed.add_field(name="Clear messages", value= "!clear [amount (default is 5)]", inline=False)
     await ctx.send(embed=embed)
 
