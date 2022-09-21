@@ -7,7 +7,7 @@ I created this bot to learn how to make Discord bots and how to use APIs (I used
 <div align=center>
 Currently with this bot, you search Spotify for a song/artist and it will display some information about it. 
  
-You can watch the demo video [**here**](https://youtu.be/rlVV-3SfUdc) or add the bot to your server [**here**](https://discord.com/api/oauth2/authorize?client_id=990217860611711046&permissions=2048&scope=bot) (the bot is hosted on Heroku).
+You can watch the demo video [**here**](https://youtu.be/rlVV-3SfUdc) ~~or add the bot to your server [**here**](https://discord.com/api/oauth2/authorize?client_id=990217860611711046&permissions=2048&scope=bot) (the bot is hosted on Heroku).~~ (Due to Heroku removing their free tier, this bot will no longer be able to be added to your Discord server until I find an alternative).
 </div>
 
 <h3 align=left>Commands:</h3>
